@@ -1,7 +1,8 @@
-const { getPrimeFactors } = require('./function/primeFactory');
+const { getTwoDistinctPrimeFactors } = require('./function/primeFactory')
 
-
-const primeFactors = getPrimeFactors(120);
+// Two Distinct Prime Factor
+const primeFactors = getTwoDistinctPrimeFactors(20)
+console.log(primeFactors)
 
 
 
