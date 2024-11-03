@@ -3,7 +3,7 @@
  * @param {Number} number 
  * @returns {Map} map of factors and exponent
  */
-const getPrimeFactors = (number) => {
+function getPrimeFactors(number) {
     // Define value
     const factors = new Map()
     let divisor = 2;
@@ -28,7 +28,7 @@ const getPrimeFactors = (number) => {
  * @param {Number} number - Number to find prime factor 
  * @returns {Array<{prime:number,exponent:number},{prime:number,exponent:number}>} - Answer
  */
-export const getTwoDistinctPrimeFactors = (number) => {
+function getTwoDistinctPrimeFactors(number) {
     // Validate
     if (!Number.isInteger(number)) {
         console.error(`Input is invalid type`, { number })
@@ -64,11 +64,11 @@ export const getTwoDistinctPrimeFactors = (number) => {
 }
 
 /**
- * GetTwoDistinctPrimeFactors
+ * GetThreeDistinctPrimeFactors
  * @param {Number} number - Number to find prime factor 
  * @returns {Array<{prime:number,exponent:number},{prime:number,exponent:number},{prime:number,exponent:number}>} - Answer
  */
-export const getTreeDistinctPrimeFactors = (number) => {
+function getThreeDistinctPrimeFactors(number) {
     // Validate
     if (!Number.isInteger(number)) {
         console.error(`Input is invalid type`, { number })
@@ -103,3 +103,28 @@ export const getTreeDistinctPrimeFactors = (number) => {
         { prime: factors[2][0], exponent: factors[2][1] }
     ]
 }
+
+/**
+ * PrimeNumber
+ * @param {Number} primeNumber 
+ * @return {Boolean} true,false
+ */
+function isPrime(primeNumber) {
+    if (primeNumber <= 1) return false // Because 1 is not prime number
+    if (primeNumber <= 3) return true // Because 2 and 3 is prime number
+    if (primeNumber % 2 === 0 || primeNumber % 3 === 0) return false //Because prime number is can't not have other number to mod == 0 ignore self and 1
+
+    // Check is prime number
+    for (let number = 5; number * number <= primeNumber; number += 6) {
+        if (primeNumber % number === 0 || primeNumber % (number + 2) === 0) {
+            return false;
+        }
+    }
+    return true
+}
+
+module.exports = {
+    getTwoDistinctPrimeFactors,
+    getThreeDistinctPrimeFactors,
+    isPrime
+};
